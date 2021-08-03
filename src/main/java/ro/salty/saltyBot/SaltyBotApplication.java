@@ -8,12 +8,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
+import ro.salty.saltyBot.listeners.PingListener;
 
 @SpringBootApplication
 public class SaltyBotApplication {
 
 	@Autowired
 	private Environment env;
+
+	@Autowired
+	private PingListener pingListener;
 
 	public static void main(String[] args) { SpringApplication.run(SaltyBotApplication.class, args); }
 
@@ -26,15 +30,7 @@ public class SaltyBotApplication {
 				.login()
 				.join();
 
-		api.addMessageCreateListener(event -> {
-			if(event.getMessageContent().equals(".ping")){
-				event.getChannel().sendMessage("Pong!");
-			}
-			if(event.getMessageContent().equals(".melon")){
-				event.getChannel().sendMessage("What did the melon say when his lawn looked dry.\n" +
-						"Guess it's time to watermalawn.");
-			}
-		});
+		api.addMessageCreateListener(pingListener);
 		return api;
 	}
 
