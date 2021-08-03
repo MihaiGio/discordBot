@@ -1,9 +1,5 @@
 package ro.salty.saltyBot;
 
-import com.merakianalytics.orianna.Orianna;
-import com.merakianalytics.orianna.types.common.Platform;
-import com.merakianalytics.orianna.types.common.Region;
-import com.merakianalytics.orianna.types.dto.summoner.Summoner;
 import org.javacord.api.DiscordApi;
 import org.javacord.api.DiscordApiBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
